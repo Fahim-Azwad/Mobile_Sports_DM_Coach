@@ -1,1 +1,1 @@
-# Mobile_Sports_DM_Coach
+Summer Game AI Research Project under Prof. Scott John Easley
