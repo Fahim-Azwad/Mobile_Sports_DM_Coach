@@ -4,6 +4,8 @@ using TMPro;
 
 public class CoachSlotUI : MonoBehaviour
 {
+    public CoachData assignedCoach;
+
     [Header("UI States")]
     public GameObject emptyState;  // The "Empty" GameObject
     public GameObject hiredState;  // The "Hired" GameObject with Name, Salary, Rating, etc.
@@ -12,7 +14,8 @@ public class CoachSlotUI : MonoBehaviour
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI salaryText;
     public TextMeshProUGUI ratingText;
-    public TextMeshProUGUI typeText;
+    public TextMeshProUGUI DEFText;
+    public TextMeshProUGUI OFFText;
     public Button viewCoachButton;
     public Button fireCoachButton;
 
@@ -26,14 +29,16 @@ public class CoachSlotUI : MonoBehaviour
     private void Start()
     {
         //coachManager = FindObjectOfType<CoachManager>();
-/*
-        // Setup buttons
-        if (viewCoachButton != null)
-           // viewCoachButton.onClick.AddListener(ViewCoachDetails);
-        if (fireCoachButton != null)
-            fireCoachButton.onClick.AddListener(FireCoach);
-        if (hireCoachButton != null)
-            hireCoachButton.onClick.AddListener(OpenHiringMarket);*/
+        /*
+                // Setup buttons
+                if (viewCoachButton != null)
+                    // viewCoachButton.onClick.AddListener(ViewCoachDetails);
+                    if (fireCoachButton != null)
+                        fireCoachButton.onClick.AddListener(FireCoach);
+                if (hireCoachButton != null)
+                    hireCoachButton.onClick.AddListener(OpenHiringMarket);*/
+
+        UpdateDisplay(assignedCoach);
     }
 
     public void Initialize(CoachType type)
@@ -72,10 +77,12 @@ public class CoachSlotUI : MonoBehaviour
             salaryText.text = $"${coach.weeklySalary:N0}/wk";
 
         if (ratingText != null)
-            ratingText.text = $"{coach.starRating} Stars";
+            ratingText.text = "Rating :" + $"{coach.starRating} Stars";
 
-        if (typeText != null)
-            typeText.text = coach.position.ToString();
+        if (DEFText != null)
+            DEFText.text = "DEF +" + $"{coach.defenseBonus}" + ", OFF +" + $"{coach.offenseBonus}";
+
+
     }
 
 
