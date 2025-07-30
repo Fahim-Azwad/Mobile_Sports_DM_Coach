@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0a29b54108b43e4983475ce483e41ce, type: 3}
   m_Name: c1
   m_EditorClassIdentifier: 
-  coachName: 
-  position: 0
+  coachName: vdfvfdgr
+  position: 1
   coachPortrait: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   weeklySalary: 5000
   starRating: 4
@@ -21,4 +21,4 @@ MonoBehaviour:
   defenseBonus: 29
   specialTeamsBonus: 9
   coachDescription: 
-  type: 2
+  type: 1

@@ -5,6 +5,7 @@ using TMPro;
 public class CoachSlotUI : MonoBehaviour
 {
     public CoachData assignedCoach;
+    public CoachType type;
 
     [Header("UI States")]
     public GameObject emptyState;  // The "Empty" GameObject
@@ -38,6 +39,11 @@ public class CoachSlotUI : MonoBehaviour
                 if (hireCoachButton != null)
                     hireCoachButton.onClick.AddListener(OpenHiringMarket);*/
 
+        
+
+    }
+    private void Update()
+    {
         UpdateDisplay(assignedCoach);
     }
 
@@ -45,12 +51,12 @@ public class CoachSlotUI : MonoBehaviour
     {
         slotType = type;
         UpdateDisplay(null); // Start with empty state
+        
     }
 
     public void UpdateDisplay(CoachData coach)
     {
-        currentCoach = coach;
-
+       
         if (coach == null)
         {
             // Show empty state
@@ -66,6 +72,7 @@ public class CoachSlotUI : MonoBehaviour
             // Update hired state UI
             UpdateHiredStateDisplay(coach);
         }
+        UpdateCoach();
     }
 
     private void UpdateHiredStateDisplay(CoachData coach)
@@ -85,7 +92,17 @@ public class CoachSlotUI : MonoBehaviour
 
     }
 
-
+    private void UpdateCoach() {
+        if (type == CoachType.Offense)
+        {
+            assignedCoach = CoachManager.instance.offenseCoach;
+            Debug.Log("assigning offense coach");
+        }
+        else if (type == CoachType.Defense) {
+            assignedCoach = CoachManager.instance.defenseCoach;
+            Debug.Log("assigning defense coach");
+        }
+    }
 /*
     private void FireCoach()
     {

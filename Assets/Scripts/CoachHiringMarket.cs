@@ -88,4 +88,13 @@ public class CoachHiringMarket : MonoBehaviour
         if (Type2 != null)
             Type2.text = "Type: " + $"{coach.type}";
     }
+
+
+    public void HireCoach1() {
+        CoachManager.instance.HireCoach(assignedCoach1);
+    }
+    public void HireCoach2()
+    {
+        CoachManager.instance.HireCoach(assignedCoach2);
+    }
 }

@@ -4,16 +4,29 @@ using System;
 
 public class CoachManager : MonoBehaviour
 {
+    public static CoachManager instance;
+
     [Header("Available Coaches")]
     public List<CoachData> allCoaches = new List<CoachData>();
 
     [Header("Current Staff - Defense and Offense Only")]
     public CoachData defenseCoach;
     public CoachData offenseCoach;
+    public CoachData SpecialCoach;
 
-    [Header("UI References")]
-    public CoachSlotUI defenseSlot;
-    public CoachSlotUI offenseSlot;
+    private void Awake()
+    {
+        // If an instance already exists and it's not this one, destroy this one.
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        // This is the one and only instance.
+        instance = this;
+}
+
 
     // Events
     public static event Action<CoachData, CoachType> OnCoachHired;
@@ -28,20 +41,6 @@ public class CoachManager : MonoBehaviour
     {
         // Load coaches from Resources
         LoadCoaches();
-
-        // Initialize UI slots
-        if (defenseSlot != null)
-        {
-            defenseSlot.Initialize(CoachType.Defense);
-            defenseSlot.UpdateDisplay(defenseCoach);
-        }
-
-        if (offenseSlot != null)
-        {
-            offenseSlot.Initialize(CoachType.Offense);
-            offenseSlot.UpdateDisplay(offenseCoach);
-        }
-
     }
 
     private void LoadCoaches()
@@ -81,14 +80,10 @@ public class CoachManager : MonoBehaviour
         if (coach.position == CoachType.Defense)
         {
             defenseCoach = coach;
-            if (defenseSlot != null)
-                defenseSlot.UpdateDisplay(coach);
         }
         else if (coach.position == CoachType.Offense)
         {
             offenseCoach = coach;
-            if (offenseSlot != null)
-                offenseSlot.UpdateDisplay(coach);
         }
         OnCoachHired?.Invoke(coach, coach.position);
         Debug.Log($"Hired {coach.coachName} for {coach.position}");
@@ -103,13 +98,11 @@ public class CoachManager : MonoBehaviour
         if (position == CoachType.Defense)
         {
             coachToFire = defenseCoach;
-            slotToUpdate = defenseSlot;
             defenseCoach = null;
         }
         else if (position == CoachType.Offense)
         {
             coachToFire = offenseCoach;
-            slotToUpdate = offenseSlot;
             offenseCoach = null;
         }
 
@@ -121,7 +114,7 @@ public class CoachManager : MonoBehaviour
 
         // Reset coach status
         coachToFire.isHired = false;
-    
+
         //coachToFire.weeksEmployed = 0;
 
         // Update UI
@@ -157,7 +150,7 @@ public class CoachManager : MonoBehaviour
 
         foreach (CoachData coach in allCoaches)
         {
-            if ( !coach.isHired && coach.position == type)
+            if (!coach.isHired && coach.position == type)
             {
                 // Only Defense and Offense for now
                 if (type == CoachType.Defense || type == CoachType.Offense)
@@ -209,6 +202,5 @@ public class TeamBonus
     public int offenseBonus;
     public int defenseBonus;
     public int specialTeamsBonus; // Keep for future use
-
     public int TotalBonus => offenseBonus + defenseBonus + specialTeamsBonus;
 }

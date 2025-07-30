@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Dhruv
   m_EditorClassIdentifier: 
   coachName: GAMERUP
-  position: 0
+  position: 1
   coachPortrait: {fileID: 0}
-  weeklySalary: 11365
+  weeklySalary: 17438
   starRating: 3
   offenseBonus: 16
-  defenseBonus: 34
-  specialTeamsBonus: 19
+  defenseBonus: 23
+  specialTeamsBonus: 18
   coachDescription: 
-  type: 0
+  type: 1

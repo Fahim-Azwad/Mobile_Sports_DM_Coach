@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bill Belichick
   m_EditorClassIdentifier: 
   coachName: Bill Belichick
-  position: 0
+  position: 1
   coachPortrait: {fileID: 0}
   weeklySalary: 14716
   starRating: 3
