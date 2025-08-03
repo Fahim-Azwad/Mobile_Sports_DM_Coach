@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using System.IO;
 
 public class CoachManager : MonoBehaviour
 {
@@ -45,11 +46,47 @@ public class CoachManager : MonoBehaviour
 
     private void LoadCoaches()
     {
+        // Load from ScriptableObject Resources (static coaches)
         CoachData[] coaches = Resources.LoadAll<CoachData>("Coaches");
         allCoaches.Clear();
         allCoaches.AddRange(coaches);
 
-        Debug.Log($"Loaded {allCoaches.Count} coaches");
+        // Also load from database if available
+        LoadCoachesFromDatabase();
+
+        Debug.Log($"Loaded {allCoaches.Count} coaches total");
+    }
+    
+    private void LoadCoachesFromDatabase()
+    {
+        string databasePath = Path.Combine(Application.streamingAssetsPath, "Database", "coach.json");
+        
+        if (!File.Exists(databasePath))
+        {
+            Debug.Log("No database file found, using only ScriptableObject coaches");
+            return;
+        }
+
+        try
+        {
+            string jsonContent = File.ReadAllText(databasePath);
+            JsonWrapper wrapper = JsonUtility.FromJson<JsonWrapper>("{\"Items\":" + jsonContent + "}");
+            
+            if (wrapper?.Items != null)
+            {
+                foreach (var dbRecord in wrapper.Items)
+                {
+                    // Convert database record to CoachData
+                    CoachData coachData = CoachData.CreateFromDatabaseRecord(dbRecord);
+                    allCoaches.Add(coachData);
+                }
+                Debug.Log($"Loaded {wrapper.Items.Length} coaches from database");
+            }
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"Failed to load coaches from database: {e.Message}");
+        }
     }
 
     public bool HireCoach(CoachData coach)
