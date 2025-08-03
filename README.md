@@ -6,6 +6,14 @@ A Unity-based mobile sports management game with advanced coach database integra
 
 ## 🎯 **Latest Features (Complete Coach Database Integration System)**
 
+### **Screen 4 Performance Dashboard - NEW** ✅
+- ✅ **Dynamic Analytics**: Real-time performance metrics from database
+- ✅ **ELT Integration**: Extract team data → Load performance metrics → Transform for UI
+- ✅ **Before/After Comparison**: Shows coaching impact with visual indicators
+- ✅ **Weekly Breakdown**: Detailed coach contributions and team improvements
+- ✅ **ROI Analysis**: Investment tracking with profitability indicators
+- ✅ **Database-Driven**: All data dynamically loaded from coaching staff
+
 ### **Dynamic Coach Loading System**
 - ✅ **Dual Data Sources**: Supports both Unity ScriptableObjects and JSON database files
 - ✅ **Real-time Filtering**: Filter coaches by type (All/Defense/Offense/Special Teams)
