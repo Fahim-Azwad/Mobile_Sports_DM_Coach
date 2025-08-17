@@ -6,8 +6,24 @@
 
 1. **Open Unity** → Load `Assets/Scenes/FMGCOACH.unity`
 2. **Play Scene** → Use N/T/F keys to test
-3. **Start Backend** → Run `dotnet run` in backend folder (optional)
+3. **Start Backend** (Optional) → Navigate to `TeammateInteraction/Database/FMG-Coach-Backend-main/` and run `dotnet run`
 4. **Test All Screens** → Navigate between Coach Hiring, Performance Analytics, and Coach Profile screens
+
+## 🌐 **Backend Server**
+
+The project includes a complete .NET API backend server:
+- **Location**: `TeammateInteraction/Database/FMG-Coach-Backend-main/`
+- **Source**: Based on [FMG-Coach-Backend](https://github.com/Aryan-2602/FMG-Coach-Backend/tree/main)
+- **Database**: SQLite with coach, team, and performance data
+- **API**: RESTful endpoints for all coach management operations
+- **Setup**: See [BACKEND_SERVER.md](BACKEND_SERVER.md) for complete guide
+
+### **Start Backend Server**
+```powershell
+cd "TeammateInteraction/Database/FMG-Coach-Backend-main"
+dotnet run
+```
+**Server runs on**: `http://localhost:5175`
 
 ## 📱 **Available Screens**
 
