@@ -2,6 +2,15 @@
 
 *Complete guide for individual coach details and information display*
 
+## 🎮 **Navigation & Controls**
+
+### **Quick Access Shortcuts** (After Quick Start section)
+- **F** - Toggle between JSON and API mode (switches data source)
+- **N** - Load random coach from database/API  
+- **T** - Load next coach by type (Defense → Offense → Special Teams → Defense)
+
+*Note: No UI navigation buttons found in current implementation - navigation appears to be through keyboard shortcuts only*
+
 ## 📍 **Scene Information**
 - **Scene File**: `Assets/Scenes/FMGCOACH.unity`
 - **Screen Location**: Coach Details screen within main scene
@@ -12,10 +21,58 @@
 ## 🚀 **Quick Start**
 
 1. **Open Scene**: Load `FMGCOACH.unity` in Unity
-2. **Navigate to Coach Details**: Access from main interface
-3. **Configure Coach ID**: Set specific coach to display
-4. **Play Scene**: Coach details load automatically
-5. **View Details**: Complete coach profile with statistics
+2. **Add Required Components**: Ensure CoachProfilePopulator script is attached to a GameObject
+3. **Configure UI References**: Assign all UI elements in the CoachProfilePopulator inspector
+4. **Set Coach Display Mode**: 
+   - Enable "Load From Database" for dynamic coach loading
+   - Choose "Use API" for live data or disable for JSON fallback
+5. **Play Scene**: Coach profile loads automatically
+6. **Test Profile Display**: Use keyboard shortcuts F/N/T for testing different coaches
+
+### **Essential Script Setup**
+- **CoachProfilePopulator**: The ONLY script needed for coach profile functionality
+  - Handles coach data loading from API/JSON
+  - Manages UI population and display
+  - Provides keyboard shortcuts for testing (F/N/T)
+
+### **Coach Profile Controls**
+
+#### **CoachProfilePopulator Controls (F/N/T)** - Built into the main script
+- **F** - Toggle between API and JSON data modes
+  - Switches between live API data and local JSON fallback
+  - Useful for testing offline functionality
+- **N** - Load random coach from database/API  
+  - Loads a random coach for testing different profiles
+  - Uses currently selected data source (API or JSON)
+- **T** - Cycle through coach types (Defense → Offense → Special Teams → Defense)
+  - Loads the next coach of a different type
+  - Useful for testing different coach specializations
+
+**Note**: These are the ONLY controls for the Coach Profile screen. Other testing scripts (CoachPreloadTester, CoachDebugHelper) are for different screens and don't affect coach profile functionality.
+
+### **Script Dependencies**
+**Essential Scripts:**
+- **CoachProfilePopulator**: The complete coach profile system
+  - Handles all coach data loading (API/JSON)
+  - Manages UI population and display  
+  - Provides built-in testing controls (F/N/T)
+  - Requires no additional scripts to function
+
+**Backend Dependencies:**
+- **CoachManager**: Must exist in scene for team context (optional)
+- **API Backend**: For live coach data (optional - has JSON fallback)
+
+**UI Requirements:**
+- Various UI Text/Image components assigned in inspector
+- Coach photo loading system
+- Stat display containers and prefabs
+
+### **Quick Access Shortcuts**
+- **F** - Toggle between API and JSON data modes
+- **N** - Load random coach from database/API  
+- **T** - Cycle through coach types (Defense → Offense → Special Teams → Defense)
+
+*These controls are built into CoachProfilePopulator and require no additional scripts*
 
 ## 👤 **Coach Profile Display**
 

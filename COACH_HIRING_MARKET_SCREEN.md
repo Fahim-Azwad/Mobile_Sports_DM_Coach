@@ -2,62 +2,112 @@
 
 *Complete guide for the main coach hiring and management interface*
 
+## 🎮 **Navigation & Controls**
+
+### **Built-in Coach Hiring Controls**
+*These controls are built into the CoachHiringMarket.cs script and require no additional components*
+
+#### **Automatic On-Screen Instructions**
+The script displays: **"N = New Coaches, T = Toggle Filter, F = Filter Type"**
+
+#### **Keyboard Controls**
+- **N** - Load new coaches from API/database (loads 2 coaches for the slots)
+- **T** - Same as N in database mode (reload coaches)
+- **F** - Cycle filter types: ALL → D → O → S → ALL (Defense/Offense/Special Teams)
+
+#### **Mouse/Touch Controls**
+- **View Coach Buttons** - Click to see detailed coach information
+- **Hire Buttons** - Click to hire coaches (validates budget automatically)
+- **Filter Dropdown** - Manually select coach types (ALL/D/O/S)
+
 ## 📍 **Scene Information**
 - **Scene File**: `Assets/Scenes/FMGCOACH.unity`
-- **Screen Location**: Main interface (default screen)
-- **Primary Script**: `CoachManager.cs`
-- **UI Components**: Coach slots, filter buttons, budget display
-- **Navigation Hub**: Access point to Performance Analytics (Screen 4) and Coach Details screens
+- **Screen Location**: Main coach hiring interface
+- **Primary Script**: `CoachHiringMarket.cs` (NOT CoachManager.cs)
+- **UI Components**: 2 coach slots, filter dropdown, budget display, instructions text
+- **Purpose**: Load, filter, and hire coaches from API/database
 
 ## 🚀 **Quick Start**
 
 1. **Open Scene**: Load `FMGCOACH.unity` in Unity
-2. **Play Scene**: Press Play button
-3. **Test Controls**: Use N/T/F keyboard shortcuts
-4. **Hire Coaches**: Click on available coach slots
+2. **Add Required Components**: Ensure CoachHiringMarket script is attached to a GameObject
+3. **Configure UI Elements**: Assign coach slot UI elements, filter dropdown, and budget text in inspector
+4. **Set API Configuration**: Configure baseURL and teamId for backend integration
+5. **Play Scene**: Press Play button and coaches will load automatically
+6. **Test Controls**: Use N/T/F keyboard shortcuts for coach loading and filtering
+7. **Hire Coaches**: Click on coach slots to hire coaches
+
+### **Essential Script Setup**
+- **CoachHiringMarket**: The main script that handles the entire hiring market
+  - Loads coaches from API/database
+  - Manages filtering (ALL → D → O → S)
+  - Handles hiring/budget validation
+  - Provides built-in instructions display ("N = New Coaches, T = Toggle Filter, F = Filter Type")
+
+### **UI Elements Required**
+- Coach Slot 1 & 2 UI elements (nameText, salaryText, ratingText, viewButton)
+- Filter dropdown for coach type selection
+- Budget display text
+- Instructions text (automatically populated by script)
 
 ## 🎮 **Controls & Features**
 
-### **Keyboard Shortcuts**
+### **Built-in Keyboard Shortcuts (CoachHiringMarket.cs)**
+*These controls are built into the CoachHiringMarket script and displayed automatically in the instructions text*
+
 | Key | Action | Description |
 |-----|--------|-------------|
 | **N** | Load New Coaches | Fetch fresh coaches from API/database |
-| **T** | Toggle Filter | Switch between filter modes |
-| **F** | Cycle Filters | Rotate through All/Defense/Offense/Special Teams |
-| **P** | Print Status | Show current coach status in console |
-| **R** | Reload System | Force reload coaches from API |
+| **T** | Toggle Filter | Same as N - loads coaches from API (T = reload in database mode) |
+| **F** | Cycle Filter Type | Rotate through ALL → D → O → S (Defense/Offense/Special Teams) |
+
+### **On-Screen Instructions**
+The script automatically displays: **"N = New Coaches, T = Toggle Filter, F = Filter Type"**
 
 ### **UI Elements**
-- **Coach Slots**: Display available coaches with stats
-- **Filter Dropdown**: Select coach type (All/Defense/Offense/Special Teams)
-- **Budget Display**: Current team budget and spending
-- **Hire/Fire Buttons**: Coach management actions
+- **Coach Slot 1 & 2**: Display available coaches with name, salary, rating, type
+- **Filter Dropdown**: Select coach type manually (ALL/D/O/S) 
+- **Budget Display**: Shows current team budget loaded from API
+- **View Coach Buttons**: Click to view detailed coach information
+- **Hire Buttons**: Click to hire coaches (with budget validation)
 
 ## 🔧 **System Setup**
 
 ### **Required Components**
-Ensure these GameObjects exist in your scene:
+The CoachHiringMarket script needs these UI elements assigned in the inspector:
 
 ```
-Hierarchy:
-├── CoachManager (with CoachManager script)
-├── CoachSlotUI_1 (with CoachSlotUI script)
-├── CoachSlotUI_2 (with CoachSlotUI script) 
-├── FilterDropdown (Dropdown UI component)
-├── BudgetDisplay (Text/TMP component)
-└── HireFireButtons (Button components)
+Inspector Configuration:
+├── API Configuration
+│   ├── baseURL: "http://localhost:5175"
+│   └── teamId: (your team GUID)
+├── Coach Slot 1 Elements
+│   ├── nameText1: TextMeshProUGUI for coach name
+│   ├── salaryText1: TextMeshProUGUI for salary display
+│   ├── ratingText1: TextMeshProUGUI for rating
+│   ├── Type1: TextMeshProUGUI for coach type
+│   └── viewCoachButton1: Button for viewing coach details
+├── Coach Slot 2 Elements
+│   ├── nameText2: TextMeshProUGUI for coach name
+│   ├── salaryText2: TextMeshProUGUI for salary display
+│   ├── ratingText2: TextMeshProUGUI for rating
+│   ├── Type2: TextMeshProUGUI for coach type
+│   └── viewCoachButton2: Button for viewing coach details
+├── Coach Filtering
+│   ├── filterDropdown: Dropdown for manual filter selection
+│   ├── budgetText: TextMeshProUGUI for budget display
+│   └── instructionsText: TextMeshProUGUI for control instructions
+└── Database Integration
+    └── loadFromDatabase: Enable for API/database integration
 ```
 
-### **Auto-Setup Option**
-Add `SystemSetupHelper` to any GameObject:
-```csharp
-// SystemSetupHelper will automatically create missing components
-public class SystemSetupHelper : MonoBehaviour
-{
-    [ContextMenu("Setup All Systems")]
-    public void SetupAllSystems() { ... }
-}
-```
+### **No Additional Scripts Needed**
+CoachHiringMarket.cs is completely self-contained and handles:
+- Coach loading from API/database
+- Budget loading and validation
+- Filter management
+- UI updates and instructions
+- Hiring functionality
 
 ## 📊 **Coach Data Integration**
 

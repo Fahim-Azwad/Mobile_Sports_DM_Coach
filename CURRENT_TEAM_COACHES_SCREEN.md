@@ -2,6 +2,47 @@
 
 *Complete guide for viewing and managing coaches currently on your team*
 
+## 🎮 **Navigation & Controls**
+
+### **Required Setup for Testing**
+To access Current Team Coaches functionality, you need to set up the FMGCOACH scene properly:
+1. **Add CoachSlotUI Script**: Attach to GameObjects for coach display slots
+2. **Add CoachPreloadTester Script**: Essential for coach management controls
+3. **Add CoachDebugHelper Script** (Optional): For debugging coach status
+
+### **Team Management Keyboard Controls**
+**Note**: These controls require CoachPreloadTester script to be attached to a GameObject in the scene.
+
+#### **CoachPreloadTester Controls (P/R/F)**
+- **P** - Print current coach status to console
+  - Shows Defense Coach: Name, Rating, Salary, Bonuses
+  - Shows Offense Coach: Name, Rating, Salary, Bonuses
+  - Displays "EMPTY SLOT" for unfilled positions
+- **R** - Reload coaches from API/Database
+  - Fires all current coaches first
+  - Triggers PreLoadTeamCoaches method
+  - Loads fresh coach data from configured source
+- **F** - Fire all coaches
+  - Removes all currently hired coaches
+  - Updates budget and UI displays
+  - Clears both Defense and Offense coach slots
+
+#### **CoachDebugHelper Controls (C/L)**
+- **C** - Check coach status and system health
+  - Verifies CoachManager instance exists
+  - Shows current API settings (loadFromAPI, baseURL)
+  - Lists currently hired coaches
+  - Identifies configuration issues
+- **L** - Check API settings specifically
+  - Shows loadFromAPI and isAPIAvailable status
+  - Provides troubleshooting guidance for API issues
+
+### **UI Components (CoachSlotUI)**
+- **Coach Slot Display**: Shows hired coaches with name, salary, rating, bonuses
+- **Empty State**: Shows "EMPTY" when no coach is hired for that position
+- **Automatic Updates**: Responds to CoachManager events (OnCoachHired, OnCoachFired)
+- **Real-time Sync**: Updates display when coaches are hired/fired through any method
+
 ## 📍 **Scene Information**
 - **Scene File**: `Assets/Scenes/FMGCOACH.unity`
 - **Screen Location**: Current Team Coaches display within main scene
@@ -12,8 +53,22 @@
 ## 🚀 **Quick Start**
 
 1. **Open Scene**: Load `FMGCOACH.unity` in Unity
-2. **Navigate to Team View**: Access Current Team Coaches screen from main interface
-3. **View Hired Coaches**: See all coaches currently on your team
+2. **Add Required Components**: 
+   - CoachManager script (core system)
+   - CoachSlotUI scripts (attached to coach display GameObjects)
+   - CoachPreloadTester script (for P/R/F controls)
+3. **Setup Coach Display Slots**: 
+   - Create GameObjects for Defense Coach slot
+   - Create GameObjects for Offense Coach slot  
+   - Attach CoachSlotUI script to each slot
+   - Configure slot type (Defense/Offense) in inspector
+4. **Play Scene**: Coach slots will automatically display hired coaches
+5. **Test Team Management**: Use P/R/F keys to manage current team coaches
+
+### **Essential Components**
+- **CoachManager**: Core coach management system
+- **CoachSlotUI**: Visual display for individual coach slots
+- **CoachPreloadTester**: Team management controls and testing
 4. **Manage Team**: Fire coaches, view stats, check salaries
 5. **Team Analysis**: Review total team cost and performance impact
 
@@ -290,6 +345,40 @@ Solution:
 3. Test API delete endpoints
 4. Validate UI state management
 ```
+
+## 🔧 **Troubleshooting**
+
+### **Script Missing Issues**
+
+#### **"No Current Team Controls Working"**
+**Problem**: P/R/F keys not responding
+**Solution**: 
+1. Add CoachPreloadTester script to any GameObject in scene
+2. Ensure CoachManager.instance exists in scene
+3. Check console for "[CoachPreloadTester] ⚠️ CoachManager not found in scene!" warning
+
+#### **"Coach Slots Not Displaying"**
+**Problem**: Hired coaches not visible in Current Team view
+**Solution**:
+1. Add CoachSlotUI script to coach display GameObjects
+2. Configure emptyState and hiredState GameObjects in CoachSlotUI inspector
+3. Set correct CoachType (Defense/Offense) for each slot
+4. Ensure nameText, salaryText, ratingText are assigned
+
+#### **"Debug Controls Not Working"**
+**Problem**: C/L keys not responding
+**Solution**:
+1. Add CoachDebugHelper script to any GameObject
+2. Check console output for debug messages
+3. Verify CoachManager exists before using debug controls
+
+### **Configuration Checklist**
+- [ ] CoachManager script exists in scene
+- [ ] CoachSlotUI attached to coach display GameObjects
+- [ ] CoachPreloadTester added for P/R/F controls
+- [ ] Coach slot types configured (Defense/Offense)
+- [ ] UI references assigned in CoachSlotUI inspector
+- [ ] CoachDebugHelper added for troubleshooting (optional)
 
 ## 🎉 **Ready for Production**
 

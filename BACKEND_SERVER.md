@@ -1,7 +1,18 @@
 # 🌐 Backend Server Setup & API Guide
 
-*Complete guide for running and using the .NET API backend server*
+*Complete guide for running and using the .NET API backend server## 🔄 **Unity Integration**
 
+### **Screen-Based API Usage**
+The backend integrates with all four screens in FMGCOACH.unity:
+
+| Screen | Navigation Button | API Endpoints Used |
+|--------|------------------|-------------------|
+| 🏈 **Coach Hiring Market** | "Hire Coaches" | `/api/coach/all`, `/api/coach/isAffordable`, `/api/coach/hire` |
+| 👥 **Current Team Coaches** | "My Team" | `/api/team/coaches`, `/api/coach/fire`, `/api/team/budget` |
+| 📊 **Performance Analytics** | "Analytics" | `/api/performance/*`, `/api/team/stats` |
+| 👤 **Coach Profile/Details** | [Coach Name] | `/api/coach/{id}`, `/api/coach/teamDetails` |
+
+### **API Configuration in Unity**
 ## � **Source Information**
 
 This backend implementation is based on the **FMG-Coach-Backend** repository:

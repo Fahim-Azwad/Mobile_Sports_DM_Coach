@@ -9,6 +9,24 @@
 3. **Start Backend** (Optional) → Navigate to `TeammateInteraction/Database/FMG-Coach-Backend-main/` and run `dotnet run`
 4. **Test All Screens** → Navigate between Coach Hiring Market (main), Current Team Coaches (team view), Performance Analytics (Screen 4), and Coach Details screens within the same scene
 
+## 🧭 **Screen Navigation Flow**
+
+```
+FMGCOACH.unity Scene Navigation:
+
+┌─────────────────────────────────────────────────────────────┐
+│                    Main Interface                           │
+│                                                             │
+│  🏈 Coach Hiring Market ←→ 👥 Current Team Coaches        │
+│           ↕                           ↕                    │
+│  📊 Performance Analytics ←→ 👤 Coach Profile/Details       │
+│                                                             │
+│  Navigation Buttons:                                        │
+│  • "Hire Coaches" • "My Team" • "Analytics"               │
+│  • [Coach Name] • "Back" • "Compare"                      │
+└─────────────────────────────────────────────────────────────┘
+```
+
 ## 🌐 **Backend Server**
 
 The project includes a complete .NET API backend server:
@@ -54,13 +72,49 @@ All screens are integrated within the main `FMGCOACH.unity` scene:
 
 ## 🎮 **Controls & Testing**
 
-### **Keyboard Shortcuts**
-- **N** - Load new coaches
-- **T** - Toggle filter mode
-- **F** - Cycle through filters
-- **P** - Print coach status (CoachPreloadTester)
-- **R** - Reload coaches from API/database
-- **C** - Check system status
+### **Screen Navigation**
+Navigate between all four screens using these buttons:
+- **"Hire Coaches"** → Coach Hiring Market (main interface)
+- **"My Team"** → Current Team Coaches display  
+- **"Analytics"** → Performance Analytics (Screen 4)
+- **[Coach Name]** → Individual Coach Profile/Details
+
+### **Keyboard Shortcuts (Testing)**
+
+#### **Essential Testing Setup**
+To access all controls, attach these scripts to GameObjects in the FMGCOACH scene:
+- **CoachPreloadTester**: Team management (P/R/F)
+- **CoachSlotUI**: Coach display slots  
+- **CoachDebugHelper**: Debugging (C/L)
+- **PerformanceAnalyticsDemo**: Analytics testing (R/S/C)
+
+#### **Coach Hiring Market Controls (CoachHiringMarket.cs)**
+- **N** - Load new coaches from API/database
+- **T** - Reload/refresh coaches (same as N for database)
+- **F** - Cycle through filter types (ALL → Defense → Offense → Special Teams)
+
+#### **Coach Profile Controls (CoachProfilePopulator.cs)**
+- **F** - Toggle between API and JSON data modes
+- **N** - Load random coach data for testing
+- **T** - Cycle through coach types (Defense → Offense → Special Teams)
+
+#### **Team Management Controls (CoachPreloadTester.cs)**
+- **P** - Print current team coach status to console
+- **R** - Reload coaches from API/Database (fires all coaches first)
+- **F** - Fire all currently hired coaches
+
+#### **Debug Controls (CoachDebugHelper.cs)**
+- **C** - Check coach status and system health  
+- **L** - Check API settings and troubleshoot configuration
+
+#### **Analytics Demo Controls (PerformanceAnalyticsDemo.cs)**
+- **R** - Run analytics demo manually
+- **S** - Populate sample performance data
+- **C** - Clear analytics data
+
+#### **No Keyboard Controls**
+- **Performance Analytics Screen**: Uses automated data loading
+- **Current Team Coaches Screen**: Displays data through CoachSlotUI components
 
 ### **Quick Setup**
 1. Add `SystemSetupHelper` to any GameObject for automatic system setup

@@ -2,6 +2,37 @@
 
 *Complete guide for team performance tracking and coaching impact analysis*
 
+## 🎮 **Navigation & Controls**
+
+### **Screen Navigation Buttons**
+- **"Hire Coaches"** → Switch to Coach Hiring Market screen
+- **"My Team"** → Switch to Current Team Coaches screen
+- **"Analytics"** → Stay on Performance Analytics (current screen)
+- **"Back to Main"** → Return to main Coach Hiring interface
+
+### **Performance Analytics Demo Controls**
+**Note**: These controls require PerformanceAnalyticsDemo script to be attached to a GameObject in the scene.
+
+#### **PerformanceAnalyticsDemo Controls (R/S/C)**
+- **R** - Run demo manually
+  - Executes the complete performance analytics demonstration
+  - Loads team data and generates sample performance metrics
+  - Useful for testing the analytics system
+- **S** - Populate sample data manually
+  - Generates sample performance data for testing
+  - Creates before/after coaching comparison data
+  - Populates UI with demonstration statistics
+- **C** - Clear data
+  - Clears all performance analytics data
+  - Resets the analytics display
+  - Useful for starting fresh tests
+
+### **Analytics View Controls**
+- **No Direct Keyboard Shortcuts**: Main screen uses automated data loading
+- **Automatic Data Loading**: Performance metrics load automatically from API/database
+- **Statistical Display**: Shows before/after coaching comparison data
+- **Interactive Elements**: UI toggles handled by StatViewToggle script (if present)
+
 ## 📍 **Scene Information**
 - **Scene File**: `Assets/Scenes/FMGCOACH.unity`
 - **Screen Location**: Screen 4 within main scene
