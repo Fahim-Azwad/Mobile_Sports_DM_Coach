@@ -1,18 +1,21 @@
-# 👤 Coach Profile Screen
+# 👤 Coach Profile/Details Screen
 
 *Complete guide for individual coach details and information display*
 
 ## 📍 **Scene Information**
-- **Scene File**: `Assets/Scenes/CoachProfile.unity`
+- **Scene File**: `Assets/Scenes/FMGCOACH.unity`
+- **Screen Location**: Coach Details screen within main scene
 - **Primary Script**: `CoachProfilePopulator.cs`
 - **Purpose**: Detailed individual coach information and statistics
+- **Navigation**: Accessible from main Coach Hiring Market interface
 
 ## 🚀 **Quick Start**
 
-1. **Open Scene**: Load `CoachProfile.unity` in Unity
-2. **Configure Coach ID**: Set specific coach to display
-3. **Play Scene**: Coach details load automatically
-4. **View Details**: Complete coach profile with statistics
+1. **Open Scene**: Load `FMGCOACH.unity` in Unity
+2. **Navigate to Coach Details**: Access from main interface
+3. **Configure Coach ID**: Set specific coach to display
+4. **Play Scene**: Coach details load automatically
+5. **View Details**: Complete coach profile with statistics
 
 ## 👤 **Coach Profile Display**
 
@@ -472,7 +475,8 @@ public class ContractNegotiation
 ## 🎯 **Coach Profile Screen Checklist**
 
 ### **Setup Verification**
-- [ ] CoachProfile.unity scene loads without errors
+- [ ] FMGCOACH.unity scene loads without errors
+- [ ] Coach Details screen displays correctly within main scene
 - [ ] CoachProfilePopulator script attached to GameObject
 - [ ] All UI references assigned in Inspector
 - [ ] StatRowPrefab properly configured

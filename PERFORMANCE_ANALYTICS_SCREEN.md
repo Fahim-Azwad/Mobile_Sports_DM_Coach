@@ -1,18 +1,21 @@
-# 📊 Performance Analytics Screen
+# 📊 Performance Analytics Screen (Screen 4)
 
 *Complete guide for team performance tracking and coaching impact analysis*
 
 ## 📍 **Scene Information**
-- **Scene File**: `Assets/Scenes/PerformanceAnalytics.unity`
+- **Scene File**: `Assets/Scenes/FMGCOACH.unity`
+- **Screen Location**: Screen 4 within main scene
 - **Primary Script**: `StatCardPopulator.cs`
 - **Purpose**: Before/after coaching comparison with ROI tracking
+- **Navigation**: Accessible from main interface as Screen 4
 
 ## 🚀 **Quick Start**
 
-1. **Open Scene**: Load `PerformanceAnalytics.unity` in Unity
-2. **Add Required Components**: Ensure StatCardPopulator exists
-3. **Play Scene**: Performance data loads automatically
-4. **View Analytics**: Compare before/after coaching statistics
+1. **Open Scene**: Load `FMGCOACH.unity` in Unity
+2. **Navigate to Screen 4**: Access Performance Analytics from main interface
+3. **Add Required Components**: Ensure StatCardPopulator exists
+4. **Play Scene**: Performance data loads automatically
+5. **View Analytics**: Compare before/after coaching statistics
 
 ## 📊 **Analytics Dashboard**
 
@@ -349,7 +352,8 @@ public class CoachingEfficiency
 ## 🎯 **Performance Analytics Checklist**
 
 ### **Setup Verification**
-- [ ] PerformanceAnalytics.unity scene loads correctly
+- [ ] FMGCOACH.unity scene loads correctly
+- [ ] Performance Analytics (Screen 4) displays properly within main scene
 - [ ] StatCardPopulator script attached to GameObject
 - [ ] Before/After containers properly assigned
 - [ ] StatRowPrefab reference set in Inspector

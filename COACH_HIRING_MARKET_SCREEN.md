@@ -1,11 +1,13 @@
-# 🏈 Coach Hiring Market Screen
+# 🏈 Coach Hiring Market Screen (Main Interface)
 
 *Complete guide for the main coach hiring and management interface*
 
 ## 📍 **Scene Information**
 - **Scene File**: `Assets/Scenes/FMGCOACH.unity`
+- **Screen Location**: Main interface (default screen)
 - **Primary Script**: `CoachManager.cs`
 - **UI Components**: Coach slots, filter buttons, budget display
+- **Navigation Hub**: Access point to Performance Analytics (Screen 4) and Coach Details screens
 
 ## 🚀 **Quick Start**
 
