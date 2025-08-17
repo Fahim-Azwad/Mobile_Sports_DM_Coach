@@ -2580,6 +2580,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 527063976}
   m_CullTransparentMesh: 1
+--- !u!1 &533516903
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 533516905}
+  - component: {fileID: 533516904}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &533516904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533516903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a5c88207da87e84884f5929a1348185, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runTestsOnStart: 1
+  statusText: {fileID: 0}
+  testButton: {fileID: 0}
+--- !u!4 &533516905
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533516903}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &586615454
 GameObject:
   m_ObjectHideFlags: 0
@@ -5462,7 +5509,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1229792002
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5847,6 +5894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bece5d45fbab55b4093f640094789c8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadFromDatabase: 1
   assignedCoach1: {fileID: 11400000, guid: 9dc75be538bd22745bb411c0cd46144d, type: 2}
   assignedCoach2: {fileID: 11400000, guid: dc13a7f723701154e8c50329af929336, type: 2}
   emptyState: {fileID: 0}
@@ -5856,12 +5904,19 @@ MonoBehaviour:
   ratingText1: {fileID: 1971308365}
   Type1: {fileID: 2093982625}
   viewCoachButton1: {fileID: 908575069}
+  specialtiesContainer1: {fileID: 0}
+  specialtyPrefab1: {fileID: 0}
   nameText2: {fileID: 1506585111}
   salaryText2: {fileID: 1051716080}
   ratingText2: {fileID: 2121008337}
   Type2: {fileID: 780411467}
   viewCoachButton2: {fileID: 2047062256}
-  hireCoachButton: {fileID: 0}
+  specialtiesContainer2: {fileID: 0}
+  specialtyPrefab2: {fileID: 0}
+  filterDropdown: {fileID: 0}
+  budgetText: {fileID: 0}
+  staticBudget: 500000
+  instructionsText: {fileID: 0}
 --- !u!1 &1302206665
 GameObject:
   m_ObjectHideFlags: 0
@@ -7060,6 +7115,7 @@ MonoBehaviour:
       value: +$2K for 90%+ field goals
     - key: Total Cost
       value: $48,000
+  loadFromDatabase: 1
   coachNameText: {fileID: 101681731}
   experienceText: {fileID: 1295479075}
   previousTeamText: {fileID: 1526466851}
@@ -9773,3 +9829,4 @@ SceneRoots:
   - {fileID: 1402569010}
   - {fileID: 1280686275}
   - {fileID: 901636457}
+  - {fileID: 533516905}

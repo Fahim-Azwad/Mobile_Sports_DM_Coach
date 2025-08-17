@@ -29,22 +29,62 @@ public class CoachSlotUI : MonoBehaviour
 
     private void Start()
     {
-        //coachManager = FindObjectOfType<CoachManager>();
-        /*
-                // Setup buttons
-                if (viewCoachButton != null)
-                    // viewCoachButton.onClick.AddListener(ViewCoachDetails);
-                    if (fireCoachButton != null)
-                        fireCoachButton.onClick.AddListener(FireCoach);
-                if (hireCoachButton != null)
-                    hireCoachButton.onClick.AddListener(OpenHiringMarket);*/
-
+        // Subscribe to coach events
+        CoachManager.OnCoachHired += OnCoachHired;
+        CoachManager.OnCoachFired += OnCoachFired;
         
-
+        // Initialize display based on type
+        Initialize(type);
+    }
+    
+    private void OnDestroy()
+    {
+        // Unsubscribe from events
+        CoachManager.OnCoachHired -= OnCoachHired;
+        CoachManager.OnCoachFired -= OnCoachFired;
+    }
+    
+    private void OnCoachHired(CoachData coach, CoachType coachType)
+    {
+        // Update display if this slot matches the hired coach type
+        if (coachType == type)
+        {
+            UpdateDisplay(coach);
+        }
+    }
+    
+    private void OnCoachFired(CoachType coachType)
+    {
+        // Update display if this slot matches the fired coach type
+        if (coachType == type)
+        {
+            UpdateDisplay(null);
+        }
     }
     private void Update()
     {
-        UpdateDisplay(assignedCoach);
+        // Check if the assigned coach has changed from CoachManager
+        var currentManagerCoach = GetCurrentCoachFromManager();
+        if (currentManagerCoach != assignedCoach)
+        {
+            assignedCoach = currentManagerCoach;
+            UpdateDisplay(assignedCoach);
+        }
+    }
+    
+    private CoachData GetCurrentCoachFromManager()
+    {
+        if (CoachManager.instance == null) return null;
+        
+        switch (type)
+        {
+            case CoachType.Offense:
+                return CoachManager.instance.offenseCoach;
+            case CoachType.Defense:
+                return CoachManager.instance.defenseCoach;
+            default:
+                return null;
+        }
     }
 
     public void Initialize(CoachType type)
@@ -56,23 +96,23 @@ public class CoachSlotUI : MonoBehaviour
 
     public void UpdateDisplay(CoachData coach)
     {
-       
+        currentCoach = coach;
+        
         if (coach == null)
         {
             // Show empty state
-            emptyState.SetActive(true);
-            hiredState.SetActive(false);
+            if (emptyState != null) emptyState.SetActive(true);
+            if (hiredState != null) hiredState.SetActive(false);
         }
         else
         {
             // Show hired state
-            emptyState.SetActive(false);
-            hiredState.SetActive(true);
+            if (emptyState != null) emptyState.SetActive(false);
+            if (hiredState != null) hiredState.SetActive(true);
 
             // Update hired state UI
             UpdateHiredStateDisplay(coach);
         }
-        UpdateCoach();
     }
 
     private void UpdateHiredStateDisplay(CoachData coach)
@@ -92,15 +132,26 @@ public class CoachSlotUI : MonoBehaviour
 
     }
 
-    private void UpdateCoach() {
-        if (type == CoachType.Offense)
+    private void UpdateCoach() 
+    {
+        if (CoachManager.instance != null)
         {
-            assignedCoach = CoachManager.instance.offenseCoach;
-            Debug.Log("assigning offense coach");
-        }
-        else if (type == CoachType.Defense) {
-            assignedCoach = CoachManager.instance.defenseCoach;
-            Debug.Log("assigning defense coach");
+            if (type == CoachType.Offense)
+            {
+                assignedCoach = CoachManager.instance.offenseCoach;
+                if (assignedCoach != null)
+                {
+                    Debug.Log($"[CoachSlotUI] Assigning offense coach: {assignedCoach.coachName}");
+                }
+            }
+            else if (type == CoachType.Defense) 
+            {
+                assignedCoach = CoachManager.instance.defenseCoach;
+                if (assignedCoach != null)
+                {
+                    Debug.Log($"[CoachSlotUI] Assigning defense coach: {assignedCoach.coachName}");
+                }
+            }
         }
     }
 /*
