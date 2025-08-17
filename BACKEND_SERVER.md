@@ -44,6 +44,10 @@ info: Microsoft.Hosting.Lifetime[0]
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | `GET` | `/api/team` | Get team information |
+| `GET` | `/api/team/coaches` | Get current team roster |
+| `DELETE` | `/api/coach/fire/{coachId}` | Remove coach from team |
+| `GET` | `/api/team/stats` | Get team performance metrics |
+| `GET` | `/api/team/budget` | Get current budget status |
 | `POST` | `/api/team` | Create new team |
 | `PUT` | `/api/team/{id}` | Update team |
 
@@ -113,9 +117,10 @@ In your Unity scripts, configure these settings:
 
 ### **Components with API Integration**
 1. **CoachManager.cs** - Coach hiring and management
-2. **StatCardPopulator.cs** - Performance analytics data
-3. **CoachProfilePopulator.cs** - Individual coach details
-4. **TeamManager.cs** - Team creation and management
+2. **TeamDisplayManager.cs** - Current team coaches display  
+3. **StatCardPopulator.cs** - Performance analytics data
+4. **CoachProfilePopulator.cs** - Individual coach details
+5. **TeamManager.cs** - Team creation and management
 
 ### **API Status Detection**
 The system automatically detects if the API server is available:
