@@ -101,5 +101,13 @@ InitTestScene*.unity*
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
 
-# Teammate Interaction files
+# Teammate Interaction files (except backend source)
 /TeammateInteraction/
+!/TeammateInteraction/Database/
+/TeammateInteraction/Database/*
+!/TeammateInteraction/Database/FMG-Coach-Backend-main/
+
+# Exclude backend build artifacts specifically
+TeammateInteraction/Database/FMG-Coach-Backend-main/bin/
+TeammateInteraction/Database/FMG-Coach-Backend-main/obj/
+TeammateInteraction/Database/FMG-Coach-Backend-main/.vs/

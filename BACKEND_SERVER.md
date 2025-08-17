@@ -2,7 +2,14 @@
 
 *Complete guide for running and using the .NET API backend server*
 
-## 🚀 **Quick Start**
+## � **Source Information**
+
+This backend implementation is based on the **FMG-Coach-Backend** repository:
+- **Original Repository**: https://github.com/Aryan-2602/FMG-Coach-Backend/tree/main
+- **Local Implementation**: `\TeammateInteraction\Database\FMG-Coach-Backend-main\`
+- **Integration**: Customized for Mobile Sports DM Coach Unity project
+
+## �🚀 **Quick Start**
 
 ### **Start the Server**
 ```powershell
