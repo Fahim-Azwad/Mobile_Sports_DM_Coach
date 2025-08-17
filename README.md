@@ -4,183 +4,118 @@
 
 ## 🚀 **Quick Start**
 
-1. **Test the system**: Add `SystemTester.cs` to any GameObject for automated validation
-2. **Controls**: N=Load coaches, T=Toggle filter, F=Cycle filters  
-3. **Documentation**: See `PROJECT_GUIDE.md` for user guide, `TECHNICAL_GUIDE.md` for development
+1. **Open Unity** → Load `Assets/Scenes/FMGCOACH.unity`
+2. **Play Scene** → Use N/T/F keys to test
+3. **Start Backend** → Run `dotnet run` in backend folder (optional)
+4. **Test All Screens** → Navigate between Coach Hiring, Performance Analytics, and Coach Profile screens
 
-## ✅ **System Status**
+## 📱 **Available Screens**
 
-### **Core Features**
-- 🏆 **Coach Management**: Dynamic hiring/firing with database integration
-- 📊 **Performance Analytics**: Real-time coaching impact and ROI tracking  
+| Screen | Scene File | Purpose |
+|--------|------------|---------|
+| 🏈 **Coach Hiring Market** | `FMGCOACH.unity` | Main coach hiring and management |
+| 📊 **Performance Analytics** | `PerformanceAnalytics.unity` | Team performance tracking |
+| 👤 **Coach Profile** | `CoachProfile.unity` | Individual coach details |
+
+## ✅ **Core Features**
+
+- 🏆 **Dynamic Coach Management**: Hire/fire coaches with real-time budget updates
+- 📊 **Performance Analytics**: Before/after coaching comparison with ROI tracking
 - 💾 **Save/Load System**: Persistent game state with backup/restore
-- 🔍 **Delta Tracking**: Performance changes monitoring between sessions
-- 🛡️ **Runtime Validation**: Data integrity and performance monitoring
+- 🌐 **API Integration**: Live backend data with offline fallbacks
+- 🎯 **Smart Filtering**: Filter coaches by type, rating, and budget
+- � **Real-time Updates**: Live data synchronization between screens
 
-### **Latest Implementation (Phase 2-4 Complete)**
-- ✅ **SaveLoadLogic.cs**: Async save/load with backup system
-- ✅ **RuntimeValidator.cs**: JSON/ScriptableObject bridge validation
-- ✅ **StatusDeltaChecker.cs**: Stat delta persistence and trending
-- ✅ **SystemTester.cs**: Comprehensive testing framework
+## 🔧 **System Requirements**
 
-## � **Documentation**
+- **Unity**: 2022.3 LTS or later
+- **TextMeshPro**: Installed via Package Manager
+- **.NET Backend** (Optional): For live API data
+- **Platform**: Windows, Android, iOS compatible
 
-- **PROJECT_GUIDE.md**: Complete user guide and feature overview
-- **TECHNICAL_GUIDE.md**: Developer implementation details and architecture  
-- **TESTING_GUIDE.md**: Step-by-step testing instructions and troubleshooting
+## 🎮 **Controls & Testing**
 
-## 📁 **Key Files**
+### **Keyboard Shortcuts**
+- **N** - Load new coaches
+- **T** - Toggle filter mode
+- **F** - Cycle through filters
+- **P** - Print coach status (CoachPreloadTester)
+- **R** - Reload coaches from API/database
+- **C** - Check system status
 
-```
-Assets/Scripts/
-├── SaveLoadLogic.cs         # Save/load system with backup
-├── RuntimeValidator.cs      # Data validation and monitoring  
-├── StatusDeltaChecker.cs    # Performance delta tracking
-├── SystemTester.cs          # Automated testing framework
-├── QuickTestPanel.cs        # UI testing panel
-└── CoachManager.cs          # Coach management singleton
-```
+### **Quick Setup**
+1. Add `SystemSetupHelper` to any GameObject for automatic system setup
+2. Add `SystemTester` for comprehensive testing
+3. All required components will be created automatically
 
----
+## 📖 **Documentation Structure**
 
-*Ready to test? Add SystemTester.cs to a GameObject and press Play!*
-├── Bill Belichick.asset    # Example coach ScriptableObject
-├── Dhruv.asset            # Example coach ScriptableObject
-└── ...                    # Additional coach assets
-```
+This project uses **5 focused documents** for complete coverage:
 
-## 🔧 **Technical Implementation**
+1. **README.md** - This overview and quick start guide
+2. **BACKEND_SERVER.md** - API server setup and endpoints
+3. **COACH_HIRING_MARKET_SCREEN.md** - Main hiring interface guide  
+4. **PERFORMANCE_ANALYTICS_SCREEN.md** - Analytics dashboard setup
+5. **COACH_PROFILE_SCREEN.md** - Individual coach details system
 
-### **Database Schema (coach.json)**
+## 🗃️ **Database Schema**
+
 ```json
 {
   "coach_id": "unique_id",
-  "coach_name": "Coach Name",
-  "coach_type": "D|O|S",     // Defense/Offense/Special Teams
+  "coach_name": "Coach Name", 
+  "coach_type": "D|O|S",
   "experience": 5,
-  "salary": 2.5,             // In millions (converted to weekly)
-  "overall_rating": 4.2,     // 1-5 scale
-  
-  // Detailed Stats (0-10 scale)
+  "salary": 2500000,
+  "overall_rating": 4.2,
   "run_defence": 8.5,
   "pressure_control": 7.2,
-  "coverage_discipline": 9.1,
-  "turnover": 6.8,
-  
   "passing_efficiency": 7.5,
-  "rush": 8.2,
-  "red_zone_conversion": 9.0,
-  "play_variation": 6.5,
-  
-  "field_goal_accuracy": 8.8,
-  "kickoff_instance": 7.3,
-  "return_speed": 8.1,
-  "return_coverage": 7.9
+  "field_goal_accuracy": 8.8
 }
 ```
 
-### **Coach Types**
-- **Defense (D)**: Run Defense, Pressure Control, Coverage Discipline, Turnover Generation
-- **Offense (O)**: Passing Efficiency, Rushing Attack, Red Zone Conversion, Play Variation
-- **Special Teams (S)**: Field Goal Accuracy, Kickoff Distance, Return Speed, Return Coverage
+## 🔄 **Data Flow**
 
-## 🚀 **Getting Started**
+```
+Backend API ←→ Unity Scripts ←→ UI Components
+     ↓              ↓              ↓
+Database ←→ Coach Objects ←→ Visual Display
+```
 
-### **Prerequisites**
-- Unity 2022.3 LTS or later
-- TextMeshPro package installed
+## 🛠️ **Key Scripts**
 
-### **Setup Instructions**
-1. **Clone Repository**
-   ```bash
-   git clone https://github.com/Fahim-Azwad/Mobile_Sports_DM_Coach.git
-   ```
+| Script | Purpose | Location |
+|--------|---------|----------|
+| `CoachManager.cs` | Main coach management singleton | All scenes |
+| `StatCardPopulator.cs` | Performance analytics UI | PerformanceAnalytics |
+| `CoachProfilePopulator.cs` | Coach details display | CoachProfile |
+| `SystemTester.cs` | Automated testing framework | Any scene |
+| `SystemSetupHelper.cs` | Auto-setup missing components | Any scene |
 
-2. **Open in Unity**
-   - Launch Unity Hub
-   - Click "Open" and select the project folder
-   - Wait for Unity to import assets
+## 🎯 **Getting Started Checklist**
 
-3. **Configure Database**
-   - Ensure `Assets/StreamingAssets/Database/coach.json` exists
-   - Database is automatically loaded at runtime
+- [ ] Clone repository and open in Unity
+- [ ] Verify all 3 scenes load without errors
+- [ ] Test Coach Hiring Market with N/T/F keys
+- [ ] Check Performance Analytics displays data
+- [ ] Verify Coach Profile shows individual details
+- [ ] (Optional) Start backend server for live API data
+- [ ] Run SystemTester to validate all components
 
-4. **Test the System**
-   - Open `Assets/Scenes/FMGCOACH.unity`
-   - Play the scene
-   - Use N/T/F keys to test coach loading
+## � **Deployment Ready**
 
-## 🎯 **Key Features Breakdown**
-
-### **CoachData.cs Enhancement**
-- **Dual System Support**: Works with both Unity Inspector and JSON database
-- **Auto-Conversion**: `CreateFromDatabaseRecord()` bridges database to ScriptableObject
-- **Extended Stats**: Added all database fields while maintaining Unity compatibility
-- **Backward Compatible**: Existing coach assets continue working unchanged
-
-### **Dynamic Filtering System**
-- **Dropdown Filter**: User-friendly selection interface
-- **Keyboard Controls**: Development-friendly testing shortcuts
-- **Real-time Updates**: Instant coach loading based on filter selection
-- **Smart Fallbacks**: Default coaches when filtered results are insufficient
-
-### **UI Enhancements**
-- **Specialty Calculation**: Converts 0-10 database stats to 0-50% bonuses
-- **Top N Display**: Shows best 3-4 specialties per coach
-- **Currency Formatting**: Professional salary display with thousands separators
-- **Error Handling**: Graceful fallbacks for missing data or files
-
-## 📖 **Documentation**
-
-### **Setup Guides**
-- `COACHDATA_CONSOLIDATION.md` - Data structure unification details
-- `COACH_HIRING_CLEANED.md` - Clean implementation guide
-- `UNITY_DEMO_SCRIPT.md` - Development workflow documentation
-
-### **Implementation Details**
-- `COACH_DETAILS_INTEGRATED.md` - Coach details screen implementation
-- `COACH_DATABASE_INTEGRATION_SIMPLE.md` - Database integration guide
-- `COACH_SETUP_GUIDE.md` - Complete setup instructions
-
-## 🛠 **Development**
-
-### **Adding New Coaches**
-1. **Via JSON Database**: Add entries to `coach.json`
-2. **Via Unity Inspector**: Create new CoachData ScriptableObject assets
-3. **Hybrid Approach**: Use both systems simultaneously
-
-### **Extending Coach Types**
-1. Update `CoachType` enum in `CoachData.cs`
-2. Add new stat categories to `CoachDatabaseRecord`
-3. Update specialty calculation logic in UI scripts
-
-### **Testing**
-- Use keyboard controls (N/T/F) for rapid testing
-- Monitor Unity Console for debug information
-- Verify both ScriptableObject and database coaches load correctly
-
-## 🤝 **Contributing**
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly with both data sources
-5. Submit a pull request
-
-## 📄 **License**
-
-This project is part of a mobile sports management game development. Please respect intellectual property rights.
+This system is fully prepared for:
+- **Mobile Deployment** (Android/iOS)
+- **Standalone Builds** (Windows/Mac/Linux)
+- **WebGL** (Browser-based)
+- **API Integration** (Live backend data)
+- **Offline Mode** (JSON fallbacks)
 
 ---
 
-## 🎯 **Recent Major Update**
+## 🎉 **Project Status: Production Ready**
 
-**Complete Coach Database Integration System** - This update consolidates the coach data architecture, providing seamless integration between Unity's ScriptableObject system and external JSON databases. The system now supports dynamic coach loading, advanced filtering, and comprehensive UI enhancements while maintaining full backward compatibility.
+All screens are fully functional with comprehensive testing frameworks. The system supports both online API integration and offline JSON fallbacks, making it suitable for immediate deployment or further development.
 
-**Key Benefits:**
-- Game designers can continue using Unity Inspector for coach creation
-- Developers can dynamically load coaches from external databases
-- Players get enhanced UI with filtering and detailed coach information
-- System is ready for future expansion and mobile deployment
-
-Ready for Unity testing and further development! 🚀
+**Ready to build and deploy!** 🚀

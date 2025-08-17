@@ -15,11 +15,31 @@ public class CoachPreloadTester : MonoBehaviour
         if (showDebugInfo)
         {
             Debug.Log("[CoachPreloadTester] Starting coach pre-load test...");
+            
+            // Check if CoachManager exists and provide helpful message
+            if (CoachManager.instance == null)
+            {
+                Debug.LogWarning("[CoachPreloadTester] ⚠️ CoachManager not found in scene!");
+                Debug.LogWarning("💡 Solutions:");
+                Debug.LogWarning("1. Add CoachManager script to a GameObject in this scene");
+                Debug.LogWarning("2. Switch to FMGCOACH.unity scene where CoachManager exists");
+                Debug.LogWarning("3. The CoachPreloadTester will not function without CoachManager");
+            }
+            else
+            {
+                Debug.Log("[CoachPreloadTester] ✅ CoachManager found! Press P/R/F keys to test.");
+            }
         }
     }
     
     private void Update()
     {
+        // Only process input if CoachManager exists
+        if (CoachManager.instance == null)
+        {
+            return; // Silently return without spamming logs
+        }
+        
         // Test controls
         if (Input.GetKeyDown(KeyCode.P))
         {
